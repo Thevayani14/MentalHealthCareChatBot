@@ -29,11 +29,11 @@ def login_page():
             if submitted:
                 user_data = get_user(username)
                 if user_data and verify_password(user_data['hashed_password'], password):
-                st.session_state["logged_in"] = True
-                st.session_state["username"] = user_data['username']
-                st.session_state["user_id"] = user_data['id'] # <-- THIS IS THE FIX
-                st.success("Logged in successfully!")
-                st.rerun()
+                    st.session_state["logged_in"] = True
+                    st.session_state["username"] = user_data['username']
+                    st.session_state["user_id"] = user_data['id'] # <-- THIS IS THE FIX
+                    st.success("Logged in successfully!")
+                    st.rerun()
                 else:
                     st.error("Invalid username or password.")
 
