@@ -1,4 +1,4 @@
 streamlit
 google-generativeai
-pip install pymongo
 pymongo
+psycopg2-binary
