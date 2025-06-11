@@ -121,7 +121,7 @@ def chatbot_app():
 # --- 2. HELPER FUNCTIONS ---
 def configure_gemini():
     try:
-        genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+        genai.configure(api_key=st.secrets.api_keys.google)
         return genai.GenerativeModel("gemini-1.5-flash")
     except Exception as e:
         st.error(f"Failed to configure Gemini: {e}. Ensure GOOGLE_API_KEY is in st.secrets.")
