@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 import textwrap
 from login import login_page
-from database import init_db, add_message, get_messages, create_conversation, get_user_conversations, update_conversation_title
+from database import add_message, get_messages, create_conversation, get_user_conversations, update_conversation_title
 
 # --- HELPER: GENERATE TITLE FOR CHAT ---
 def generate_chat_title(first_user_message, first_ai_response, model):
@@ -202,7 +202,6 @@ def reset_assessment():
 # --- 3. MAIN ORCHESTRATOR ---
 def main():
     st.set_page_config(page_title="Mental Health Companion", layout="centered", initial_sidebar_state="auto")
-    init_db()
     if not st.session_state.get("logged_in", False):
         login_page()
     else:
