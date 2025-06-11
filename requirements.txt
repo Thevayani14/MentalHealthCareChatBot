@@ -1,4 +1,0 @@
-streamlit
-google-generativeai
-pymongo
-psycopg2-binary
