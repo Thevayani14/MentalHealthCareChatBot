@@ -2,3 +2,4 @@ streamlit
 google-generativeai
 pymongo
 certifi
+dnspython
