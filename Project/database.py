@@ -1,18 +1,19 @@
 import streamlit as st
 from pymongo import MongoClient
-from bson.objectid import ObjectId # To handle MongoDB's _id
+from bson.objectid import ObjectId
 import datetime
+import certifi # <--- IMPORT CERTIFI
 
 # --- DATABASE CONNECTION ---
 def get_db_connection():
-    """Establishes a connection to the MongoDB database."""
+    """Establishes a connection to the MongoDB database using certifi."""
     try:
-        # Get the connection string from Streamlit secrets
         uri = st.secrets["MONGO_URI"]
-        client = MongoClient(uri)
-        # You can add a ping to check the connection
+        # Pass the certifi certificate bundle to the MongoClient
+        client = MongoClient(uri, tlsCAFile=certifi.where()) # <--- ADD tlsCAFile
+        
+        # Ping to check the connection
         client.admin.command('ping')
-        # st.toast("Pinged your deployment. You successfully connected to MongoDB!")
         return client
     except Exception as e:
         st.error(f"Error connecting to MongoDB: {e}")
